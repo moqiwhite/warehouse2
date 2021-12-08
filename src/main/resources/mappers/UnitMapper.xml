@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerengineering.examinationsystem.dao.UnitDao">
+
+            <select id="getAllUnit" resultType="Unit">
+                select * from unit
+            </select>
+
+
+            <select id="getUniTid"  resultType="Unit">
+                select * from unit where id=#{id}
+            </select>
+
+            <update id="updUnit">
+                update unit set `Uname`=#{Uname} where id=#{id}
+            </update>
+
+            <insert id="addUnit">
+                insert into unit(Uname) values (#{Uname})
+            </insert>
+
+            <delete id="delUnit" parameterType="int">
+                delete from unit where id=#{id}
+            </delete>
+
+
+</mapper>

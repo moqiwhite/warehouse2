@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerengineering.examinationsystem.dao.UserDao">
+
+    <resultMap id="users" type="com.powerengineering.examinationsystem.model.entity.User">
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName"/>
+        <result column="user_card" property="userCard"/>
+        <result column="user_phone" property="userPhone"/>
+        <result column="user_mail" property="userMail"/>
+        <result column="user_auth" property="userAuth"/>
+        <result column="user_password" property="userPassword"/>
+        <result column="kaochang_id" property="kaochangId"/>
+        <result column="unit_id" property="unitId"/>
+    </resultMap>
+
+
+    <insert id="addUser">
+        insert into users (user_name,user_phone,user_card,user_password,user_mail) values (#{name},#{phone},#{card},#{pwd},#{mail})
+    </insert>
+
+    <select id="getUserByCardAndPwd" resultMap="users">
+        select * from users where user_card=#{card} and user_password=#{pwd}
+    </select>
+
+    <select id="getUserByPhone" resultMap="users">
+        select * from users where user_phone=#{phone}
+    </select>
+
+    <select id="getUserByCard" resultMap="users">
+        select * from users where user_card=#{card}
+    </select>
+
+    <select id="getUserByMail" resultMap="users">
+        select * from users where user_mail=#{mail}
+    </select>
+
+    <select id="getUserByName" resultMap="users">
+        select * from users where user_name=#{name}
+    </select>
+
+    <select id="getAllUser" resultMap="users">
+        select * from users
+    </select>
+
+    <select id="getAllUserAuthOne" resultMap="users">
+        SELECT * FROM users WHERE user_auth=1
+    </select>
+
+    <select id="getAllUserAuthTwo" resultMap="users">
+        SELECT * FROM users WHERE user_auth=2
+    </select>
+
+    <select id="getAllUserAuthThree" resultMap="users">
+        SELECT * FROM users WHERE user_auth=3
+    </select>
+
+    <insert id="addUserAuth">
+        insert into users(user_auth,kaochang_id,unit_id,user_name,user_card,user_phone,user_mail,user_password) values (#{userAuth},#{kaochangId},#{unitId},#{userName},#{userCard},#{userPhone},#{userMail},#{userPassword})
+    </insert>
+
+    <insert id="addUserAuthOne">
+        insert into users(user_auth,kaochang_id,unit_id,user_name,user_card,user_phone,user_mail,user_password) values (#{userAuth},#{kaochangId},#{unitId},#{userName},#{userCard},#{userPhone},#{userMail},#{userPassword})
+    </insert>
+
+    <insert id="addUserAuthTwo">
+        insert into users(user_auth,kaochang_id,unit_id,user_name,user_card,user_phone,user_mail,user_password) values (#{userAuth},#{kaochangId},#{unitId},#{userName},#{userCard},#{userPhone},#{userMail},#{userPassword})
+    </insert>
+
+    <insert id="addUserAuthThree">
+        insert into users(user_auth,kaochang_id,unit_id,user_name,user_card,user_phone,user_mail,user_password) values (#{userAuth},#{kaochangId},#{unitId},#{userName},#{userCard},#{userPhone},#{userMail},#{userPassword})
+    </insert>
+
+    <select id="selectUserAuthById" resultMap="users">
+        select * from users where user_id=#{id}
+    </select>
+
+    <update id="updateUserAuthById">
+        update users set user_auth=#{auth},kaochang_id=#{kid},unit_id=#{uid},user_name=#{name},user_card=#{card},user_phone=#{phone},user_mail=#{mail},user_password=#{password} where user_id=#{id}
+    </update>
+
+    <delete id="deleteUserAuthById">
+        delete from users where user_id=#{id}
+    </delete>
+
+    <select id="getUser" resultMap="users">
+      select * from users
+  </select>
+
+
+    <select id="getUserIdById" resultType="java.lang.String">
+        select user_name from users where user_id=#{id}
+    </select>
+</mapper>

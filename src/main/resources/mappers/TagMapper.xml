@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerengineering.examinationsystem.dao.TagDao">
+
+            <select id="getAllTag" resultType="Tag">
+                select * from tag
+            </select>
+
+
+            <select id="getTagid"  resultType="Tag">
+                select * from tag where id=#{id}
+            </select>
+
+            <update id="updTag">
+                update tag set `Tname`=#{tname} where id=#{id}
+            </update>
+
+            <insert id="addTag">
+                insert into tag(tname) values (#{tname})
+            </insert>
+
+            <delete id="delTag" parameterType="int">
+                delete from tag where id=#{id}
+            </delete>
+
+
+</mapper>

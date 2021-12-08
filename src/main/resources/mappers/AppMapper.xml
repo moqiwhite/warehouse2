@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerengineering.examinationsystem.dao.AppDao">
+
+            <select id="getAllApp" resultType="Apply">
+                select * from apply
+            </select>
+
+
+            <select id="getAppid"  resultType="Apply">
+                select * from apply where id=#{id}
+            </select>
+
+            <update id="updApp">
+                update apply set `name`=#{name},`yun`=#{yun},`grade`=#{grade},`createTime`=SYSDATE(),`uId`=#{uId} where id=#{id}
+            </update>
+
+            <insert id="addApp">
+                insert into apply (name,`yun`,grade,uId,`createTime`,`explain`) values (#{name},#{yun},#{grade},#{uId},SYSDATE(),#{explain})
+             </insert>
+
+            <delete id="delApp" parameterType="int">
+                delete from apply where id=#{id}
+            </delete>
+
+
+</mapper>

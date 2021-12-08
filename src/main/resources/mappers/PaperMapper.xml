@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.powerengineering.examinationsystem.dao.PaperDao">
+
+    <select id="getUnit" resultType="Unit">
+        select * from unit
+    </select>
+    <select id="getTag" resultType="Tag">
+        select * from tag
+    </select>
+    <select id ="getCraft" resultType="Craft">
+        select * from craft
+    </select>
+
+    <select id="getUnitById" resultType="Unit">
+        select * from unit where id=#{id}
+    </select>
+    <select id="getTidById" resultType="Tag">
+        select * from tag where id=#{id}
+    </select>
+
+
+
+
+    <insert id="addPaper">
+        insert into paper (PName,Uid,Bsid,Btid,answer,Bid,Tid,Crid,Mid,userId) values (#{pname},#{uid},#{bsid},#{btid},#{answer},#{bid},#{crid},#{tid},#{mid},#{userId})
+    </insert>
+
+    <select id="getPaperBtid" resultType="Paper">
+        select * from paper where Btid=#{btid}
+    </select>
+
+    <delete id="delPaper">
+        delete from paper where id=#{id}
+    </delete>
+
+    <select id="updPaperTo" resultType="Paper">
+        select * from paper where id=#{id}
+    </select>
+
+<!--    修改试卷-->
+    <update id="updPaper">
+        update paper set Uid=#{uid},Bsid=#{bsid},Btid=#{btid},Bid=#{bid},Tid=#{tid},Crid=#{crid},userId=#{userId}
+        <if test="answer!=null and answer!=''">
+            ,answer=#{answer}
+        </if>
+         where id=#{id}
+    </update>
+
+
+</mapper>
